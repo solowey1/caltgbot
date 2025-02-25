@@ -9,7 +9,7 @@ import "@telegram-apps/telegram-ui/dist/styles.css";
 import "./index.css";
 
 // Mock the environment in case, we are outside Telegram.
-// import './mockEnv.js';
+import "./mockEnv.js";
 
 // Configure all application dependencies.
 init(retrieveLaunchParams().startParam === "debug" || import.meta.env.DEV);

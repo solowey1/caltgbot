@@ -1,12 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import { backButton } from '@telegram-apps/sdk-react';
-import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { backButton } from "@telegram-apps/sdk-react";
+import { useEffect } from "react";
 
 export function Page({ children, back = true }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (back) {
+    if (back && backButton.isMounted()) {
       backButton.show();
       return backButton.onClick(() => {
         navigate(-1);
