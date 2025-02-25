@@ -11,23 +11,23 @@ import {
 import dayjs from "dayjs";
 import { Page } from "@/components/Page.jsx";
 
-const [isFromSending, setIsFromSending] = useState(false);
-
-const handleSubmit = async (event) => {
-  event.preventDefault();
-
-  setIsFromSending(true);
-
-  const formData = new FormData(event.target);
-  const data = Object.fromEntries(formData);
-
-  if (sendData.isAvailable()) {
-    sendData(JSON.stringify(data));
-    setIsFromSending(false);
-  }
-};
-
 export function FormPage() {
+  const [isFromSending, setIsFromSending] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    setIsFromSending(true);
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    if (sendData.isAvailable()) {
+      sendData(JSON.stringify(data));
+      setIsFromSending(false);
+    }
+  };
+
   return (
     <Page>
       <Form onSubmit={handleSubmit}>
