@@ -62,9 +62,15 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload dist repository
           path: "./dist"
           name: "github-pages"
+
+      - name: Wait for artifact to propagate
+        run: sleep 10
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
 
       - name: Deploy to GitHub Pages
         id: deployment
