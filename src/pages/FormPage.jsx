@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Form } from "react-router-dom";
 import { sendData } from "@telegram-apps/sdk";
 import {
@@ -12,19 +12,19 @@ import dayjs from "dayjs";
 import { Page } from "@/components/Page.jsx";
 
 export function FormPage() {
-  const [isFromSending, setIsFromSending] = useState(false);
+  // const [isFromSending, setIsFromSending] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setIsFromSending(true);
+    // setIsFromSending(true);
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
     if (sendData.isAvailable()) {
       sendData(JSON.stringify(data));
-      setIsFromSending(false);
+      // setIsFromSending(false);
     }
   };
 
@@ -59,8 +59,8 @@ export function FormPage() {
             Создать видео-встречу
           </Cell>
           <Button
-            disabled={isFromSending}
-            loading={isFromSending}
+            // disabled={isFromSending}
+            // loading={isFromSending}
             mode="filled"
             size="m"
             stretched
