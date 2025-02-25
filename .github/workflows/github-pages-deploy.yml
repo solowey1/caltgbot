@@ -32,35 +32,40 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           registry-url: "https://registry.npmjs.org"
 
       - name: Install deps
         run: npm ci
 
+      - name: Debug info
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Directory contents:"
+          ls -la
+
       - name: Build
         run: npm run build
 
-      - name: Debug build output
+      - name: Check build output
         run: |
-          npm run build
           echo "Checking build output..."
           ls -la
-          ls -la ./dist || echo "dist directory not found"
+          echo "Checking dist directory:"
+          ls -la ./dist || echo "dist directory does not exist"
 
       - name: Setup Pages
-        uses: actions/configure-pages@v3
-        with:
-          static_site_generator: vite
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
+          # Upload dist repository
           path: "./dist"
           name: "github-pages"
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
